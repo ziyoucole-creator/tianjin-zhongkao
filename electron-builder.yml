@@ -15,8 +15,8 @@ extraResources:
       - '**/*'
 publish:
   provider: github
-  owner: <GITHUB_USER>
-  repo: <GITHUB_REPO>
+  owner: ziyoucole-creator
+  repo: tianjin-zhongkao
 win:
   target: nsis
   icon: resources/icon.ico
