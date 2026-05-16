@@ -1,0 +1,27 @@
+appId: com.tianjin.zhongkao
+productName: 天津中考备考助手
+directories:
+  buildResources: resources
+  output: dist
+files:
+  - '!**/.vscode/*'
+  - '!src/*'
+  - '!electron.vite.config.*'
+  - '!{.eslintignore,.eslintrc,.prettierignore,.prettierrc,tsconfig.*}'
+extraResources:
+  - from: data/
+    to: data/
+    filter:
+      - '**/*'
+publish:
+  provider: github
+  owner: <GITHUB_USER>
+  repo: <GITHUB_REPO>
+win:
+  target: nsis
+  icon: resources/icon.ico
+nsis:
+  artifactName: ${name}-${version}-setup.${ext}
+  shortcutName: 天津中考备考助手
+  uninstallDisplayName: 天津中考备考助手
+  createDesktopShortcut: always
