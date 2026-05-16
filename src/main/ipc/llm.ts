@@ -3,8 +3,12 @@ import * as fs from 'fs'
 import * as path from 'path'
 import * as https from 'https'
 
-// 从 apikey.txt 读取 DeepSeek API Key
+// 从环境变量或 apikey.txt 读取 DeepSeek API Key
 function getApiKey(): string {
+  const envKey = process.env.DEEPSEEK_API_KEY
+  if (envKey && envKey.trim()) {
+    return envKey.trim()
+  }
   try {
     const devPath = path.join(process.cwd(), 'apikey.txt')
     if (fs.existsSync(devPath)) {
@@ -137,7 +141,7 @@ export function registerLLMHandlers(): void {
   ipcMain.handle('llm:generateSimilar', async (_event, params: GenerateSimilarParams) => {
     const apiKey = getApiKey()
     if (!apiKey) {
-      return { error: '未找到 API Key，请在项目根目录放置 apikey.txt 文件，内容为 DeepSeek API Key' }
+      return { error: '未找到 API Key，请设置环境变量 DEEPSEEK_API_KEY 或在项目根目录放置 apikey.txt 文件' }
     }
 
     const prompt = buildPrompt(params)
