@@ -1,9 +1,9 @@
-import { ipcMain } from 'electron'
+import { ipcMain, safeStorage, app } from 'electron'
 import * as fs from 'fs'
 import * as path from 'path'
 import * as https from 'https'
 
-// 从环境变量或 apikey.txt 读取 DeepSeek API Key
+// 从环境变量 > apikey.txt > 加密存储 读取 DeepSeek API Key
 function getApiKey(): string {
   const envKey = process.env.DEEPSEEK_API_KEY
   if (envKey && envKey.trim()) {
@@ -18,10 +18,14 @@ function getApiKey(): string {
     if (fs.existsSync(prodPath)) {
       return fs.readFileSync(prodPath, 'utf-8').trim()
     }
-    return ''
-  } catch {
-    return ''
-  }
+  } catch { /* fall through */ }
+  try {
+    const encPath = path.join(app.getPath('userData'), 'apikey.enc')
+    if (fs.existsSync(encPath) && safeStorage.isEncryptionAvailable()) {
+      return safeStorage.decryptString(fs.readFileSync(encPath))
+    }
+  } catch { /* fall through */ }
+  return ''
 }
 
 const DEEPSEEK_HOST = 'api.deepseek.com'

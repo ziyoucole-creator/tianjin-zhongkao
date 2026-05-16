@@ -195,6 +195,10 @@ interface Window {
         totalQuestions: number
       }>
     }
+    settings: {
+      getApiKey: () => Promise<string>
+      setApiKey: (key: string) => Promise<boolean>
+    }
     update: {
       getVersion: () => Promise<string>
       checkDb: (url: string) => Promise<{

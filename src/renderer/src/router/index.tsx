@@ -11,6 +11,7 @@ import ErrorBookPage from '../pages/ErrorBook'
 import ProgressPage from '../pages/Progress'
 import ScraperPage from '../pages/Scraper'
 import CurriculumPage from '../pages/Curriculum'
+import SettingsPage from '../pages/Settings'
 import AppLayout from '../components/Layout/AppLayout'
 
 const router = createHashRouter([
@@ -29,7 +30,8 @@ const router = createHashRouter([
       { path: 'errorbook', element: <ErrorBookPage /> },
       { path: 'progress', element: <ProgressPage /> },
       { path: 'scraper', element: <ScraperPage /> },
-      { path: 'curriculum', element: <CurriculumPage /> }
+      { path: 'curriculum', element: <CurriculumPage /> },
+      { path: 'settings', element: <SettingsPage /> }
     ]
   }
 ])

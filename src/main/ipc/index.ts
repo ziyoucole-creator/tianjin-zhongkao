@@ -8,6 +8,7 @@ import { registerMockExamHandlers } from './mockexam'
 import { registerLLMHandlers } from './llm'
 import { registerCurriculumHandlers } from './curriculum'
 import { registerUpdateHandlers } from './update'
+import { registerSettingsHandlers } from './settings'
 
 export function registerAllHandlers(mainWindow?: BrowserWindow): void {
   registerAssessmentHandlers()
@@ -19,4 +20,5 @@ export function registerAllHandlers(mainWindow?: BrowserWindow): void {
   registerLLMHandlers()
   registerCurriculumHandlers()
   registerUpdateHandlers(mainWindow)
+  registerSettingsHandlers()
 }

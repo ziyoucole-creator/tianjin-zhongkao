@@ -93,6 +93,10 @@ const api = {
       ipcRenderer.on('update:app-state', handler)
       return () => ipcRenderer.removeListener('update:app-state', handler)
     }
+  },
+  settings: {
+    getApiKey: () => ipcRenderer.invoke('settings:getApiKey') as Promise<string>,
+    setApiKey: (key: string) => ipcRenderer.invoke('settings:setApiKey', key) as Promise<boolean>
   }
 }
 

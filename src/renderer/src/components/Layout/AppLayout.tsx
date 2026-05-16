@@ -8,7 +8,8 @@ import {
   ProjectOutlined,
   LineChartOutlined,
   CloudDownloadOutlined,
-  CompassOutlined
+  CompassOutlined,
+  SettingOutlined
 } from '@ant-design/icons'
 import { useEffect, useState, useMemo } from 'react'
 import { useAppStore } from '../../stores/useAppStore'
@@ -25,7 +26,8 @@ const menuItems = [
   { key: '/exercise', icon: <BookOutlined />, label: '真题练习' },
   { key: '/errorbook', icon: <ProjectOutlined />, label: '错题本' },
   { key: '/progress', icon: <LineChartOutlined />, label: '成绩追踪' },
-  { key: '/scraper', icon: <CloudDownloadOutlined />, label: '数据爬取' }
+  { key: '/scraper', icon: <CloudDownloadOutlined />, label: '数据爬取' },
+  { key: '/settings', icon: <SettingOutlined />, label: '设置' }
 ]
 
 export default function AppLayout() {
